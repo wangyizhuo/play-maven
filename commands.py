@@ -27,31 +27,4 @@ if play_command == 'mvn:src' or play_command == 'mvn:source':
     print "~"
     os.system('mvn dependency:copy-dependencies -Dclassifier=sources')
 
-
-if play_command == 'mvn:dep' or play_command == 'mvn:dependencies' :
-    print "~~~~~~~~~~~~~~~~~~~~~"
-    print "~ Core dependencies ~"
-    print "~~~~~~~~~~~~~~~~~~~~~"
-    for jar in os.listdir(os.path.join(play_base, 'framework/lib')):
-        if jar.endswith('.jar'):
-            print(jar)
-    print "\n"
-    print "~~~~~~~~~~~~~~~~~~~~~~~"
-    print "~ Module dependencies ~"
-    print "~~~~~~~~~~~~~~~~~~~~~~~"
-    for module in modules:
-        if os.path.exists(os.path.join(module, 'lib')):
-            libs = os.path.join(module, 'lib')
-            if os.path.exists(libs):
-                for jar in os.listdir(libs):
-                    if jar.endswith('.jar'):
-                            print(jar)
-    print "\n"
-    print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-    print "~ Application dependencies ~"
-    print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-    for jar in os.listdir(os.path.join(application_path, 'lib')):
-        print(jar) 
-    print "\n"
-
 sys.exit(0)    

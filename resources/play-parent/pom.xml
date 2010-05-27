@@ -338,9 +338,33 @@
 					<configuration>
 						<outputDirectory>lib/</outputDirectory>
 						<excludeScope>provided</excludeScope>
+						<!-- To download sources jars without failing -->
+						<failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
+	<profiles>
+		<profile>
+			<id>play-src</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<artifactId>maven-dependency-plugin</artifactId>
+							<version>2.1</version>
+							<configuration>
+								<outputDirectory>play-dep-src/</outputDirectory>
+								<!-- To download sources jars without failing -->
+								<failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+								<includeScope>provided</includeScope>
+								<classifier>sources</classifier>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+	</profiles>
 </project>

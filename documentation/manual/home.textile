@@ -22,7 +22,7 @@ bc. module.ivy=${play.path}/modules/maven
 if you start from scratch, you can create an ivy project with *play new myapp --with maven* command, which will active the module and execute play mvn:init.
 
 
-h3. play-mvn specific commands 
+h3. play-maven specific commands 
 
 bc. play mvn:init
 

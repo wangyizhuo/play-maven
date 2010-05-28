@@ -11,6 +11,9 @@ if play_command == "mvn:install":
 if play_command == 'new' or play_command == "mvn:init":
     module_dir = inspect.getfile(inspect.currentframe()).replace("commands.py","")
     os.system('play mvn:install')
+    if os.path.exists('pom.xml'):
+        print "Existing pom.xml will be backed up to pom.xml.bak"
+        shutil.copyfile('pom.xml', 'pom.xml.bak')
     shutil.copyfile(os.path.join(module_dir,'resources/pom.xml'), os.path.join(application_path, 'pom.xml'))
 
 if play_command == 'mvn:update' or play_command == 'mvn:up':
@@ -39,4 +42,4 @@ if play_command == 'mvn:play-dependency-sources' or play_command == 'mvn:play-sr
     print "~"
     os.system('mvn dependency:copy-dependencies -Pplay-src')
 
-sys.exit(0)    
+sys.exit(0)

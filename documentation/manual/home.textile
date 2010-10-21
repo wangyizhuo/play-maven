@@ -17,7 +17,7 @@ h4. *NOTE: due to this reported bug: "commands.py loading breaks if more than on
 
 for existing projects, you can add the following line to your conf/application.conf:
 
-bc. module.ivy=${play.path}/modules/maven
+bc. module.maven=${play.path}/modules/maven
 
 if you start from scratch, you can create an ivy project with *play new myapp --with maven* command, which will active the module and execute play mvn:init.
 

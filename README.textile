@@ -1,0 +1,80 @@
+h1. Maven support
+
+The Maven module enables maven support for your application. It adds a pom.xml in your project and deploys a play-parent pom in your local Maven repository.
+Thus, libraries are copied to /lib folder.
+
+Moreover, this module has the ability to create a war package of a Play! application using the 'mvn package' command'.
+The Play! applciations can now be used in you Continuous Integration (CI) system.
+
+h1. <a>What is supported?</a>
+
+* A standard pom.xml can be installed in you Play! application.
+* Lib dependencies are handled by your pom and are downloaded to you /lib folder in a single command.
+* Cleaning libs in the /lib folder is supported in a single command.
+* Packaging your Play! application to a war using Maven is now possible (using only 'mvn package').
+
+h1. <a>Getting started</a>
+
+First, you need to download and install "Apache Maven":http://maven.apache.org/download.html.
+
+Finally, you need to install the play-maven module:  
+
+bc. # play install maven
+
+h1. <a>Setting up the Maven module</a>
+
+Start to create a new application in the classical way.
+
+bc. # play new test-maven
+
+Then edit the **conf/application.conf** file to enable the Maven module:
+
+bc. # Additional modules
+# ~~~~~
+# A module is another play! application. Add a line for each module you want
+# to add to your application. Module paths are either absolutes or relative to
+# the application root.
+#
+module.maven=${play.path}/modules/maven
+
+At this moment, if you are working with Eclipse, do not forget to update your .classpath :
+
+bc. # play ec
+
+You now have to install play-parent in your repository and get a pom.xml in your Play! application :
+
+bc. # play mvn:init
+
+This command installs play-parent pom in your local repository (ex : ~/.m2/repository) and copies the 'skeleton' pom from the play-module to your application.
+
+Edit your pom.xml to change your groupId, artifactId, version, name and description.
+
+Launch an update to retrieve Play! libraries and check there is no error :
+
+bc. # play mvn:up
+
+That's it ! Your application is Maven-compliant.
+The following maven commands are now working :
+
+bc. # mvn clean // be careful, it deletes your /lib folder
+# mvn compile
+# mvn package // will create a war file
+
+h1. <a>play-maven specific commands</a> 
+
+bc. # play mvn:init
+
+Installs play-parent project (a Maven pom project) into local Maven repository. Then creates the appropriate *pom.xml*. After this step, you can add your dependencies to pom.xml. 
+
+bc. # play mvn:update // or play mvn:up
+
+Retrieves all defined dependencies and then it copies them into your /lib folder.
+
+bc. # play mvn:refresh // or play mvn:re
+
+Clears your app/lib folder first, then it executes play mvn:up. 
+
+h1. <a>Known issues</a>
+
+As long as Play! framework "Issue #359":http://play.lighthouseapp.com/projects/57987/tickets/359-war-packaging-add-an-exclude-option is not resolved, 'target' directory is embedded inside the generated war.
+You have to remove it manually after packaging your war (because target directory contains Play! runtime).

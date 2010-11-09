@@ -13,19 +13,9 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>My Artifact Name</name>
   <description>My Artifact Description</description>
-  
-  <properties>
-    <play.version>1.1</play.version>
-  </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>org.play</groupId>
-      <artifactId>play</artifactId>
-      <version>1.1</version>
-      <scope>provided</scope>
-    </dependency>
-  <!-- 
+  <!-- Add your dependencies here
     <dependency>
       <groupId></groupId>
       <artifactId></artifactId>

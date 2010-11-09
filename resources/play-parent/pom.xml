@@ -19,7 +19,11 @@
         <enabled>false</enabled>
       </snapshots>
     </repository>
-  </repositories>
+  </repositories>  
+    
+  <properties>
+    <play.version>1.1</play.version>
+  </properties>
 
   <dependencies>
     <dependency>
@@ -324,6 +328,20 @@
       <artifactId>snakeyaml</artifactId>
       <version>1.6</version>
       <scope>provided</scope>
+    </dependency>
+    
+    <!-- Play! framework dependency -->
+    <dependency>
+      <groupId>org.play</groupId>
+      <artifactId>play</artifactId>
+      <version>1.1</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.play</groupId>
+      <artifactId>play-runtime</artifactId>
+      <version>1.1</version>
+      <type>zip</type>
     </dependency>
   </dependencies>
   

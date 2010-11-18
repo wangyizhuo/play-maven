@@ -1,0 +1,4 @@
+lib/
+.project
+commands.pyc
+dist

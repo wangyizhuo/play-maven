@@ -81,7 +81,9 @@ As long as Play! framework "Issue #359":http://play.lighthouseapp.com/projects/5
 You have to remove it manually after packaging your war (because target directory contains Play! runtime).
 
 h1. <a>Use case</a>
+
 The expected use case of this module:
+
 * add dependencies to pom.xml
 * run play mvn:up or play mvn:re
 * run play ec to update Eclipse environment to setup classpath for Eclipse, etc.
